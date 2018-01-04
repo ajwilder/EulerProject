@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
+<script>
+
+  function exponent(x, base) {
+    exp = bigInt(base);
+    for (i = 1; i < x; i++) {
+      exp = bigInt(exp).multiply(base)
+    }
+    return bigInt(exp).toString();
+  }
+
+  function sumOfDigits(x) {
+    const len = x.length;
+    var sm = 0;
+    for (var i = 0; i < len; i++) {
+      sm += parseInt(x[i]);
+    }
+    return sm;
+  }
+
+
+
+
+
+</script>
+
+</body>
+</html>

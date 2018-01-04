@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+  </head>
+  <body>
+<script>
+
+function permutation(x,y) {
+  var c = x.toString();
+  var d = y.toString();
+  var l = c.length;
+  if (d.length != l) return false;
+  for (var i = 0; i < l; i++) {
+    if (!(d.indexOf(c[i]) >= 0)) return false;
+  };
+  for (var i = 0; i < l; i++) {
+    if (!(c.indexOf(d[i]) >= 0)) return false;
+  };
+  return true;
+};
+
+function euler52() {
+  for (var i = 1; ; i++) {
+    if (permutation(i, i * 2) && permutation(i, i*3) && permutation(i, i * 4) && permutation(i, i * 5) && permutation(i, i * 6)) return i;
+  }
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

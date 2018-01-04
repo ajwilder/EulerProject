@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script>
+
+function isPrime(n) {
+  var x = Math.sqrt(n);
+  for (var i = 2; i <= x; i++) {
+    if (n % i === 0) return false;
+  }
+  return n > 1;
+};
+
+function circular(x) {
+  if (!isPrime(x)) return false;
+  var n = x.toString();
+  var l = n.length;
+  for (var i = 0; i < l; i++) {
+    var y = '';
+    for (var j = i; y.length < l; j++, j = j % l) {
+      y += n[j];
+    }
+    if (!isPrime(parseInt(y))) return false;
+  }
+  return true;
+}
+
+function euler35(x) {
+  var circularPrimes = [];
+  for (var i = 1; i <= x; i++) {
+    if (circular(i)) circularPrimes.push(i)
+  }
+  return circularPrimes;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

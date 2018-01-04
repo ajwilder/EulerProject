@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+function panDigital(x,y) {
+  var d = ""
+  for (var j = 1; j <= y; j++){
+    var a = j * x;
+    var d = d + a.toString();
+  }
+  if ((d.indexOf(0) >= 0)) return false;
+  for (var i = 1; i <= 9; i++) {
+    if (!(d.indexOf(i) >= 0)) return false;
+    var r = RegExp(`${i}`, "g");
+    var l = r.lastIndex;
+    r.exec(d);
+    r.exec(d);
+    if (r.lastIndex !== 0) return false;
+  }
+  return d;
+};
+
+function multiple(x,y) {
+  var d = ""
+  for (var j = 1; j <= y; j++){
+    var a = j * x;
+    var d = d + a.toString();
+  }
+  return d;
+}
+
+
+function euler38(x) {
+  var max = 0;
+  var params = [];
+  for (var i = 1; i < x; i++) {
+    for (var j = 2; multiple(i,j).length < 10; j++) {
+      if (panDigital(i,j)) {
+        var y = parseInt(panDigital(i,j));
+        if (y > max) {
+          max = y;
+          params = [i,j];
+        }
+      }
+    }
+  }
+  return {max, params};
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

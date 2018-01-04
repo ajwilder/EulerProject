@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script>
+
+function isPrime(n) {
+  var x = Math.sqrt(n);
+  for (var i = 2; i <= x; i++) {
+    if (n % i === 0) return false;
+  }
+  return n > 1;
+};
+
+function conseqPrimes(x) {
+  var output = [];
+
+  for (var i = 2; output.length < x; i++) {
+    if (isPrime(i)) output.push(i)
+  };
+  return output;
+};
+
+function euler50(x, y) {
+  debugger;
+  var a = conseqPrimes(x);
+  var maxSum = 0;
+  var numConseq = 0;
+  var primeSum = []
+  for (var i = 0; a[i] < y; i++) {
+    var sum = 0;
+    var primes = [];
+    for (var j = i; sum < y; j++) {
+      sum += a[j];
+      primes.push(a[j])
+      if (isPrime(sum) && primes.length > numConseq && sum < y) {
+        maxSum = sum;
+        numConseq = primes.length;
+        primeSum = primes;
+      }
+    }
+  }
+  return {maxSum, numConseq, primeSum};
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

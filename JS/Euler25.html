@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
+    <script>
+
+    function fibonacci(x) {
+      var seq = [bigInt(1), bigInt(1)];
+      var sum = bigInt(0)
+      for (var i = 1; i < x - 1; i++) {
+        sum = bigInt(seq[i]).add(bigInt(seq[i-1]));
+        seq.push(sum);
+      }
+      return bigInt(seq[x - 1]).toString();
+    }
+
+    function Euler25(numDig) {
+      for (i = 1; ;i++) {
+        var fib = fibonacci(i);
+        if (fib.length >= numDig) return i + " " + fib;        
+      }
+    }
+
+
+    </script>
+
+
+
+
+
+  </body>
+</html>

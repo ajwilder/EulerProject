@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+
+function panDigital(d) {
+  if (d.length !== 10) return false;
+  for (var i = 0; i <= 9; i++) {
+    if (!(d.indexOf(i) >= 0)) return false;
+    var r = RegExp(`${i}`, "g");
+    var l = r.lastIndex;
+    r.exec(d);
+    r.exec(d);
+    if (r.lastIndex !== 0) return false;
+  }
+  return d;
+};
+
+function euler43Test(d) {
+  if (parseInt(d[1] + d[2] + d[3]) % 2 !== 0) return false;
+  if (parseInt(d[2] + d[3] + d[4]) % 3 !== 0) return false;
+  if (parseInt(d[3] + d[4] + d[5]) % 5 !== 0) return false;
+  if (parseInt(d[4] + d[5] + d[6]) % 7 !== 0) return false;
+  if (parseInt(d[5] + d[6] + d[7]) % 11 !== 0) return false;
+  if (parseInt(d[6] + d[7] + d[8]) % 13 !== 0) return false;
+  if (parseInt(d[7] + d[8] + d[9]) % 17 !== 0) return false;
+  return true;
+};
+
+var digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+
+function getAllPermutations(string) {
+  var results = [];
+
+  if (string.length === 1) {
+    results.push(string);
+    return results;
+  }
+  debugger;
+  for (var i = 0; i < string.length; i++) {
+    var firstChar = string[i];
+    var charsLeft = string.substring(0, i) + string.substring(i + 1);
+    var innerPermutations = getAllPermutations(charsLeft);
+    for (var j = 0; j < innerPermutations.length; j++) {
+      results.push(firstChar + innerPermutations[j]);
+    }
+  }
+  return results;
+}
+
+function euler43() {
+  var output = [];
+  var array = getAllPermutations("0123456789");
+  for (var i = 0; i < array.length; i++) {
+    if (euler43Test(array[i])) output.push(array[i]);
+  }
+  return output;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

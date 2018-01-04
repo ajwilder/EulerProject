@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
+    <script>
+      function divisors(x) {
+        var divisors = [1];
+        var l = x;
+        for (var i = 2; i < l; i++) {
+          if (x % i == 0) {
+            divisors.push(i);
+            if (i != x/i) divisors.push(x / i);
+            l = x / i;
+          }
+        }
+        return divisors;
+      }
+      function amicable(x) {
+        let a = divisors(x);
+        let b = a.reduce((a,b) => a + b);
+        let c = divisors(b);
+        let d = c.reduce((a,b) => a + b);
+        if (d == x && x != b) return [x, b];
+      }
+
+      function euler21(x) {
+        var amicables = [];
+        for (var i = 0; i < x; i++) {
+          var am = amicable(i);
+          if (am) {
+            if (!(amicables.indexOf(am[0]) > -1)) amicables.push(...am);
+          }
+        }
+        return amicables + " " + amicables.reduce((a,b) => a + b);
+      }
+
+
+
+
+
+    </script>
+  </body>
+</html>

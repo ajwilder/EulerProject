@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const leapMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+
+
+function countDays() {
+  let day = 1;
+  let year = 1900;
+  let firstDayCount = 0;
+  for ( ; year <= 2000; year++) {
+    if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)){
+      for (var m = 0; m < leapMonths.length; m++) {
+        for (var i = 1; i <= leapMonths[m]; i++) {
+          if (i === 1 && day === 7 && year > 1900) firstDayCount++;
+          day++;
+          if (day === 8) day = 1;
+        }
+      }
+    } else {
+      for (var m = 0; m < months.length; m++) {
+        for (var i = 1; i <= months[m]; i++) {
+          if (i === 1 && day === 7 && year > 1900) firstDayCount++;
+          day++;
+          if (day === 8) day = 1;
+        }
+      }
+    }
+  }
+  return firstDayCount;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+<script>
+
+
+var output = [];
+for (i=10; i < 100000000; i++) {
+  var x = i.toString();
+  var l = x.length;
+  var z = 0;
+  for (j=0; j < l; j++) {
+    var y = parseInt(x[j]);
+    y = Math.pow(y, 5);
+    z += y
+  }
+  if (z == i) output.push(i);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

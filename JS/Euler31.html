@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+var denoms = [200, 100, 50, 20, 10, 5, 2, 1];
+
+
+function change(x, k) {
+  if (k < 0 || x < 0) {
+    return 0;
+  }
+  if (x == 0) return 1;
+  else return change(x, k -1) + change(x-denoms[k], k);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

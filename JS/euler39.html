@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+function isRightTriangle(a,b,c) {
+  if (a*a + b*b === c*c) return true;
+  else return false;
+};
+
+function euler39(x) {
+  var maxTriangles = [];
+  var max = 0;
+  //debugger;
+  for (var i = 3; i <= x; i++) {
+    var tempTriangles = [];
+    for (var a = 1; a < i ; a++) {
+      for (var b = i - a; b > a ; b--) {
+        for (var c = i - a - b; a + b < c, a + b + c == i; c--) {
+          if (isRightTriangle(a,b,c)) {
+            tempTriangles.push([a,b,c]);
+            if (tempTriangles.length > maxTriangles.length) {
+              maxTriangles = tempTriangles;
+              max = i;
+            }
+          }
+        }
+      }
+    }
+  }
+  return ([max, maxTriangles]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+  </head>
+  <body>
+
+<script>
+
+function isPrime(n) {
+  var x = Math.sqrt(n);
+  for (var i = 2; i <= x; i++) {
+    if (n % i === 0) return false;
+  }
+  return n > 1;
+};
+
+
+function truncatePrime(x) {
+  var n = x.toString();
+  var l = n.length;
+  for (var i = 0; i <l; i++) {
+    if (!isPrime(parseInt(n))) return false;
+    n = n.replace(n[0], '');
+  }
+  n = x.toString();
+  for (var j = l-1; j >= 0; j--){
+    if (!isPrime(parseInt(n))) return false;
+    n = n.slice(0, j);
+  }
+  return true;
+};
+
+function euler37(x) {
+  var output =[];
+  for (var i = 10; i <= x; i++) {
+    if (truncatePrime(i)) output.push(i);
+  }
+  return output;
+};
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script>
+
+function isPrime(n) {
+  var x = Math.sqrt(n);
+  for (var i = 2; i <= x; i++) {
+    if (n % i === 0) return false;
+  }
+  return n > 1;
+};
+
+function isOdd(x) {
+  if (x % 2 !== 0) return true;
+  else return false;
+}
+
+function primeList(x) {
+  var output = [];
+  for (var i = 1; output.length < x ; i++) {
+    if (isPrime(i)) output.push(i);
+  };
+  return output;
+};
+
+function goldbach(x, primes) {
+  for (var j = 0; primes[j] < x; j++) {
+    for (var k = 1; primes[j] + 2 * k * k <= x; k++) {
+      if (primes[j] + 2 * k * k === x) return false;
+    }
+  }
+  return true;
+}
+
+function euler46(x) {
+  var primes = primeList(x);
+  for (var i = 2; i < primes[x-1]; i++) {
+    if (!isPrime(i) && isOdd(i)) {
+      if (goldbach(i, primes)) return i;
+    }
+  }
+  return false;
+};
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

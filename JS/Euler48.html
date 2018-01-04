@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
+    <script>
+
+    //https://www.npmjs.com/package/big-integer
+
+
+function selfPowerSum(x) {
+  var y = bigInt();
+  for (var i =1; i <= x; i++) {
+    y = bigInt(y).add(bigInt(i).pow(i));
+  };
+  return y;
+};
+
+function euler48(x) {
+  var pow = bigInt(1000).pow(1000);
+  var array = [];
+  var y = bigInt();
+  for (var i =1; i <= x; i++) {
+    array.push(i);
+    y = bigInt(y).add(bigInt(i).pow(i));
+    if bigInt(y).compare(pow) ==
+  };
+
+}
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+  </body>
+</html>

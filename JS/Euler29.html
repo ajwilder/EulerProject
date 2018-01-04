@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
+    <script>
+
+//https://www.npmjs.com/package/big-integer
+
+function power(base, exp) {
+  var product = bigInt(1);
+  base = bigInt(base);
+  for (i=1; i <= exp; i++) {
+    product = bigInt(product).multiply(base);
+  }
+  return product;
+}
+
+function sequence(a, b) {
+  var sequence = [];
+  for (var i = 2; i <= a; i++) {
+    var innerSeq = [];
+    for (var j = 2; j <= b; j++) {
+      innerSeq.push(bigInt(power(i,j)).toString());
+    }
+    sequence.push(innerSeq);
+  }
+  return sequence;
+}
+
+function euler29(a,b) {
+  var t0 = new Date().getTime() / 1000;
+  var seqOut = [];
+  var seqIn = sequence(a,b);
+  while (seqIn[b-2].length !== 0) {
+    var next = bigInt(a).pow(b).add(1);
+    var nextIndex = -1, x = 0;
+    for (var i = 0; i < seqIn.length; i++) {
+      if (seqIn[i].length !== 0 && bigInt(seqIn[i][0]).compare(bigInt(next)) == -1) {
+        next = seqIn[i][0];
+        nextIndex = i;
+
+      }
+    }
+    if (nextIndex != -1) {
+      x = seqIn[nextIndex].shift();
+      if (seqOut.indexOf(x) == -1) {
+        seqOut.push(x);
+      }
+    }
+  }
+  var t1 = new Date().getTime() / 1000;
+  console.log(t1 - t0);
+  return seqOut;
+}
+
+
+
+
+
+    </script>
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+function factorial(x) {
+  var product = 1;
+  for (i = 1; i <= x; i++) {
+    product *= i;
+  }
+  return product;
+}
+
+function factorialSum(x) {
+  var s = x.toString();
+  var sum = 0;
+  for (var i =0; i < s.length; i++) {
+    var y = parseInt(s[i]);
+    sum += factorial(y);
+  }
+  if (sum == x) return true;
+  else return false;
+}
+
+function euler34(x) {
+  var product = [];
+  for (var i=3; i <= x; i++) {
+    if (factorialSum(i)) product.push(i);
+  }
+  return product;
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+
+function buildArray(x) {
+  var array = [];
+  for (var i = 0; i < x; i++) {
+    array.push(i);
+  };
+  return array;
+};
+
+// function nextPerm(start, index) {
+//   start = start.split('');
+//   var l = start.length;
+//   var next = [];
+//   debugger;
+//   for (var j = 0; j < index; j++) {
+//     next.push(start[j]);
+//   };
+//   debugger;
+//   for (var i = l-1; i > index; i--) {
+//     if (start[i] > start[i-1]) {
+//       var a = start[i];
+//       var b = start[i-1];
+//       for (var k = index; k < l; k++) {
+//         next.push(start[k])
+//       };
+//       next[i-1] = a;
+//       next[i] = b;
+//       return next.join().replace(/,/g, '');
+//     }
+//   }
+//   return null;
+// }
+function fact(x) {
+   if(x==0) {
+      return 1;
+   }
+   return x * fact(x-1);
+};
+
+function nextPerm(start) {
+  start = start.split('');
+  var l = start.length;
+  var next=[];
+  for (var t = 0; t < l; t++){
+    next[t] = start[t];
+  }
+  //debugger;
+  for (var i = l-1; i > 0; i--) {
+    if (start[i] > start[i-1]) {
+      var a = start[i];
+      var n = i;
+      for (var j = i+1; j < l; j++) {
+        if (start[j] < a && start[j] > start[i-1]) {
+          a = start[j];
+          n = j;
+        }
+      };
+      next[n] = start[i-1];
+      next[i-1] = a;
+      for (var o = l-1, m = i; o > m ; o--, m++){
+        var temp = next[o];
+        next[o] = next[m];
+        next[m] = temp;
+      }
+      return next.join().replace(/,/g, '');
+    }
+  }
+  return null;
+}
+
+function permutations(x) {
+  var array = buildArray(x);
+  var numPerms = fact(x);
+  var perms = [array.join().replace(/,/g, '')];
+  //debugger;
+  for (var i = 0; i < numPerms-1; i++) {
+    var start = perms[i];
+    var next = nextPerm(start);
+    if (next === null) return perms;
+    perms.push(next);
+}
+  return perms;
+
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
